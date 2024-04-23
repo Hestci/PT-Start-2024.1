@@ -13,15 +13,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 ">
-                    <h1 class="index">Необходимо авторизироваться</h1>
+                    <h1 class="index">Главная страница</h1>
                 <?php
-                if (!isset($_COOKIE['Useer'])) {
+                if (!isset($_COOKIE['User'])) {
                 ?>
                     <div class="index"> <a  href="/registration.php">Зарегестрируйтесь</a> или <a href="/login.php">Войдите</a>!</div>
                 <?php
                 } 
                 else {
-                    
+
+                    $conn = mysqli_connect('127.0.0.1', 'root', 'kali', 'mysite');
+
+                    $sql = "SELECT * FROM posts";
+                    $res = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($res) > 0){
+                        while ($post = mysqli_fetch_array($res)) {
+                            echo "<a href='/posts.php?id=" . $post["id"] . "'>" . $post['title'] . "</a><br>";
+                        }
+                    }
+                    else {
+                        echo "Записей пока нет";
+                    }
                 }
                 ?>
                 </div>

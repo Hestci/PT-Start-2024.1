@@ -13,16 +13,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="index">Регистрация</h1>
+                    <h1 class="index">Вход</h1>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 ">
-                   <form class="flex_center" method="post" action="registration.php">
-                        <div class="row form_reg"> <input class="form" type="email" name="email" placeholder="Email"></div>
-                        <div class="row form_reg"> <input class="form" type="text" name="login" placeholder="Login"></div>
-                        <div class="row form_reg"> <input class="form" type="password" name="password" placeholder="Password"></div>
-                        <button type="submit" class="btn_reg btn__reg" name="submit">Продолжить</button>
+                <div class="col-12">
+                   <form class="flex_center" method="post" action="login.php">
+                        <div> <input  type="text" name="login" placeholder="Login"></div>
+                        <div> <input  type="password" name="password" placeholder="Password"></div>
+                        <button type="submit" class="btn_reg btn__reg" name="submit">Войти</button>
                    </form>
                 </div>
             </div>
@@ -38,21 +37,25 @@ if (isset($_COOKIE['User'])) {
 
 require_once('db.php');
 
-
 $conn = mysqli_connect('127.0.0.1', 'root', 'kali', 'mysite');
 
 if (isset($_POST['submit'])) {
-    $email = $_POST['email'];
     $username = $_POST['login'];
     $pass = $_POST['password'];
   
+    if (!$username || !$pass) die ('Пожалуйста введите все значения!');
 
-    if (!$email || !$username || !$pass) die ('Пожалуйста введите все значения!');
 
-    $sql = "INSERT INTO users (email, username, pass) VALUES ('$email', '$username', '$pass')";
+    $sql = "SELECT * FROM users WHERE username='$username' AND pass='$pass'";
 
-    if(!mysqli_query($conn, $sql)) {
-        echo "Не удалось добавить пользователя";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) == 1) {
+        setcookie("User", $username, time()+7200);
+        header('Location: profile.php');    
+    }
+    else {
+        echo "неправельный логин или пароль";
     }
 }
 ?>
