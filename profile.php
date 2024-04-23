@@ -47,7 +47,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <form class="flex_center" method="POST" action="profile.php" enctype="multipart/from-data" name="upload">
+                        <form class="flex_center" method="POST" action="profile.php" enctype="multipart/form-data" name="upload">
                             <input type="text" class="form_add" name="title" placeholder="Заголовок поста">
                             <textarea class="form_add" name="text" cols="60" rows="10" placeholder="Введите текст в данное поле..."></textarea>
                             <input type="file" name="file" /> <br>
@@ -75,6 +75,7 @@ if (isset($_POST['submit'])) {
     if (!$title || !$main_text) die("Заполните поля");
 
     $sql = "INSERT INTO posts (title, main_text) VALUES ('$title', '$main_text')";
+
     if(!mysqli_query($conn, $sql)) die("не удалось добавить пост");
 
     if(!empty($_FILES["file"]))
@@ -86,12 +87,13 @@ if (isset($_POST['submit'])) {
         {
             move_uploaded_file($_FILES["file"]["tmp_name"], "upload/" . $_FILES["file"]["name"]);
             echo "Load in:  " . "upload/" . $_FILES["file"]["name"];
-        }
+       }
         else
         {
             echo "upload failed!";
-        }
+       }
     }
+ 
 }
 
 
