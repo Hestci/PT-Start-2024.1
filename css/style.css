@@ -1,5 +1,5 @@
 body {    
-    background-color: rgba(255, 255, 128, .5);
+    background-color: rgba(167, 152, 125, 0.5);
     font-family: 'Courier New', Courier, monospace;
     color: black;
 }
@@ -9,13 +9,11 @@ body {
 }
 .container {
     margin-top: 30px;
+    border: solid;
+    border-radius: 5px;
+    background-color: rgba(216, 204, 163, 0.5);
 }
-.row {
-}
-.col-8 {
-}
-.col-4 {
-}
+
 .col-3.nav_logo {
     background: url(../image/logo-no-background.svg) no-repeat;
     background-size: 100%;
@@ -24,15 +22,12 @@ body {
     margin-right: 195px;
 }
 
-.col-12 {
-}
 .nav_text {
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
-.img_size {
-}
+
 .title_photo {
     text-align: center;
 }
@@ -42,4 +37,28 @@ body {
     background-size: 100%;
     width: 100%;
     height: 420px;
+    margin-top: 15px;
+}
+
+.text {
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.button_js {
+    text-align: center;
+}
+
+#myButton {
+    border: none;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    background-color: #907ad8;
+    font-weight: bold;
+}
+
+#demo img {
+    margin-top: 20px;
+    width: 25%;
 }
