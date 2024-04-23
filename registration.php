@@ -33,4 +33,20 @@
 <?php 
 require_once('db.php');
 
+$conn = mysqli_connect('127.0.0.1', 'root', 'kali', 'mysite');
+
+if (isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $username = $_POST['login'];
+    $pass = $_POST['password'];
+  
+
+    if (!$email || !$username || !$pass) die ('Пожалуйста введите все значения!');
+
+    $sql = "INSERT INTO users (email, username, pass) VALUES ('$email', '$username', '$pass')";
+
+    if(!mysqli_query($conn, $sql)) {
+        echo "Не удалось добавить пользователя";
+    }
+}
 ?>
