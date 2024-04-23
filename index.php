@@ -22,7 +22,7 @@
                 } 
                 else {
 
-                    $conn = mysqli_connect('127.0.0.1', 'root', 'kali', 'mysite');
+                    $conn = mysqli_connect('db', 'root', 'kali', 'mysite');
 
                     $sql = "SELECT * FROM posts";
                     $res = mysqli_query($conn, $sql);

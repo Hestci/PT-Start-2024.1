@@ -39,7 +39,7 @@ if (isset($_COOKIE['User'])) {
 require_once('db.php');
 
 
-$conn = mysqli_connect('127.0.0.1', 'root', 'kali', 'mysite');
+$conn = mysqli_connect('db', 'root', 'kali', 'mysite');
 
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
