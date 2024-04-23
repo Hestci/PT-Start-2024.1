@@ -12,12 +12,12 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-12 index">
-                    <h1>Необходимо авторизироваться</h1>
+                <div class="col-12 ">
+                    <h1 class="index">Необходимо авторизироваться</h1>
                 <?php
                 if (!isset($_COOKIE['Useer'])) {
                 ?>
-                    <a href="/registration.php">Зарегестрируйтесь</a> или <a href="/login.php">Войдите</a>!
+                    <div class="index"> <a  href="/registration.php">Зарегестрируйтесь</a> или <a href="/login.php">Войдите</a>!</div>
                 <?php
                 } 
                 else {

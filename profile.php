@@ -33,7 +33,7 @@
             </div>
             <div class="row">
                 <div class="col-12 button_js">
-                    <button id="myButton">Click me</button>
+                    <button id="myButton" class="btn_reg">Click me</button>
                     <p id="demo"></p>
                 </div>
             </div>

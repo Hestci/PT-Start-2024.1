@@ -49,6 +49,43 @@ body {
     text-align: center;
 }
 
+.index {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.form_reg {
+    width: 375px;
+    height: 35px;
+    margin: 3px;
+}
+
+.btn_reg{
+    border: none;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    background-color: #907ad8;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#demo img {
+    margin-top: 20px;
+    width: 25%;
+}
+
+.flex_center {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
 #myButton {
     border: none;
     border-radius: 15px;
@@ -56,9 +93,4 @@ body {
     height: 50px;
     background-color: #907ad8;
     font-weight: bold;
-}
-
-#demo img {
-    margin-top: 20px;
-    width: 25%;
 }
