@@ -7,26 +7,36 @@ $dbName = "mysite";
 $conn = new mysqli($servername, $username, $password);
 
 if (!$conn) {
-    die("Ошибка подключения" . mysqli_error($conn));
+    die("Ошибка подключения". mysqli_error($conn));
 }
 
-$sql = "CREATE DATABASE IF NOT EXIST $dbName";
+$sql = "CREATE DATABASE IF NOT EXISTS $dbName";
 
 if(!mysqli_query($conn, $sql)) {
     echo"Не удалось создать БД";
 }
 
-mysql_close($conn);
+mysqli_close($conn);
+
+$conn = new mysqli($servername, $username, $password, $dbName);
 
 $sql = "CREATE TABLE IF NOT EXISTS users(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    pass VARCHAR(50) NOT NULL
-    )";
+    pass VARCHAR(50) NOT NULL)";
 
-if(!mysqli_qyery($conn, $sql)) {
+if(!mysqli_query($conn, $sql)) {
     echo "Не удалось создать таблицу Users";
   }
-  mysql_close($conn);
+
+  $sql = "CREATE TABLE IF NOT EXISTS posts(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(20) NOT NULL,
+    main_text VARCHAR(500) NOT NULL)";
+
+if(!mysqli_query($conn, $sql)) {
+    echo "Не удалось создать таблицу Posts";
+  }
+  mysqli_close($conn);
 ?>
